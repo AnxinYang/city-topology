@@ -1,7 +1,7 @@
 {
-  "name": "tip-cal-v2",
+  "name": "city-topology",
   "version": "1.0.0",
-  "description": "a tip calculator",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "init": "npm install",
@@ -12,18 +12,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AnxinYang/tip-cal-v2.git"
+    "url": "git+https://github.com/AnxinYang/city-topology.git"
   },
-  "keywords": [
-    "tip"
-  ],
+  "keywords": [],
   "author": "Anxin Yang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AnxinYang/tip-cal-v2/issues"
+    "url": "https://github.com/AnxinYang/city-topology/issues"
   },
-  "homepage": "https://github.com/AnxinYang/tip-cal-v2#readme",
+  "homepage": "https://github.com/AnxinYang/city-topology#readme",
   "dependencies": {
-    "ccts": "^1.0.1"
+    "ccts": "^1.1.10"
   }
 }
