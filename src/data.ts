@@ -57,7 +57,7 @@ function randomGenerator(size: number = 20, link_number_for_each_city: number = 
                 city.reachable_cities.push({
                     name: rc.name,
                     state: rc.state,
-                    transport: getRandomNum(1) === 1 ? 'air' : 'land'
+                    transport: getRandomNum(1) >= 0.5 ? 'air' : 'land'
                 });
                 connected.push(rc.name)
             }
