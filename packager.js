@@ -11,7 +11,8 @@ const config_dev = require('./webpack.config.dev');
 
 const argv = process.argv;
 const isProduction = argv.includes('production');
-const isServerRunning = false;
+
+let isServerRunning = false;
 
 console.log(`Mode: ${isProduction ? 'production' : 'development'}`)
 
@@ -26,7 +27,7 @@ if (!isProduction) {
                 chunks: false,
                 colors: true
             }));
-            console.log('Process completed. Starting http server');
+            console.log('Process completed. Watching files...');
             !isServerRunning && runServer();
         });
 
@@ -46,6 +47,8 @@ if (!isProduction) {
 
 
 function runServer() {
+    isServerRunning = true;
+    console.log('Starting http server...');
     let server = http.createServer(function (req, res) {
         let parsedUrl = url.parse(req.url, true);
         let path = parsedUrl.pathname;

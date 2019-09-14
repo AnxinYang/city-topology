@@ -13,3 +13,4 @@
 3. Open terminal and enter the root directory of this project.
 4. In terminal enter 'npm install'.
 5. After installition is completed, run 'node packager.js production' to start build process.
+Note: Production process will not start a http server.
