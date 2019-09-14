@@ -22,6 +22,6 @@ module.exports = {
         hot: true,
         host: "0.0.0.0",
         port: 1992,
-        contentBase: path.resolve(__dirname, './build')
+        contentBase: path.resolve(__dirname, './')
     }
 };

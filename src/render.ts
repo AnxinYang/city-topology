@@ -3,7 +3,7 @@ import { createTopologyData, state_array, getState, getCity } from './store';
 import { state, city, link } from './definitions';
 const circle_size = {
     city: 12,
-    state: 16,
+    state: 20,
 }
 
 const transport_color = {
@@ -108,11 +108,15 @@ export default function render(expandedState?: state) {
         .append('g')
         .append('circle')
         .attr('fill', '#f9ca24')
+        .attr('stroke', '#636e72')
+        .attr('stroke-width', '0')
         .parent()
         .append('text')
         .attr('text-anchor', 'middle')
         .attr('stroke', 'black')
-        .attr('dy', 30);
+        .attr('dy', (d: (city | state)) => {
+            return d.type === 'city' ? 24 : 32;
+        });
 
     let circles = d3.selectAll('.nodes g')
         .style('cursor', 'pointer')
@@ -129,6 +133,11 @@ export default function render(expandedState?: state) {
             }
         })
         .on('mouseover', function (c: (city | state)) {
+            d3.select(this)
+                .select('circle')
+                .transition()
+                .duration(200)
+                .attr('stroke-width', '2px')
             lines
                 .transition()
                 .duration(200)
@@ -137,6 +146,11 @@ export default function render(expandedState?: state) {
                 })
         })
         .on('mouseleave', function (c: (city | state)) {
+            d3.select(this)
+                .select('circle')
+                .transition()
+                .duration(200)
+                .attr('stroke-width', '0')
             lines
                 .transition()
                 .duration(200)
