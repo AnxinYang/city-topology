@@ -208,7 +208,8 @@ function render(expandedState?: state) {
         .data(links)
         .enter()
         .append('line')
-        .attr('stroke', 'black');
+        .attr('stroke', '#6ab04c')
+        .attr('stroke-width', '2px');
 
     let lines = d3.selectAll('.links line')
 
@@ -225,7 +226,7 @@ function render(expandedState?: state) {
         .enter()
         .append('g')
         .append('circle')
-        .attr('fill', 'lightgreen')
+        .attr('fill', '#f9ca24')
         .parent()
         .append('text')
         .attr('text-anchor', 'middle')
@@ -239,15 +240,11 @@ function render(expandedState?: state) {
             }
         })
         .select('circle')
-        .attr('fill', 'lightgreen')
         .attr('r', function (d: (city | state)) {
             return circle_size[d.type];
         })
         .parent()
         .select('text')
-        .attr('text-anchor', 'middle')
-        .attr('stroke', 'black')
-        .attr('dy', 5)
         .text(function (d: (city | state)) {
             return d.name
         })
