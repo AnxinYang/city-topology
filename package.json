@@ -1,0 +1,29 @@
+{
+  "name": "tip-cal-v2",
+  "version": "1.0.0",
+  "description": "a tip calculator",
+  "main": "index.js",
+  "scripts": {
+    "init": "npm install",
+    "build": "webpack -p --config webpack.config.production.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "dev": "webpack --config webpack.config.dev.js --watch",
+    "scss": "sass --watch src/main.scss build/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnxinYang/tip-cal-v2.git"
+  },
+  "keywords": [
+    "tip"
+  ],
+  "author": "Anxin Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnxinYang/tip-cal-v2/issues"
+  },
+  "homepage": "https://github.com/AnxinYang/tip-cal-v2#readme",
+  "dependencies": {
+    "ccts": "^1.0.1"
+  }
+}
