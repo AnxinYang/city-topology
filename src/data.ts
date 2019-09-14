@@ -30,7 +30,7 @@ let cities: city[] = [
             }]
     }];
 
-function randomGenerator(size: number = 20, link_number_for_each_city: number = 2, stateNames: string[]) {
+function randomGenerator(size: number = 20, link_number_for_each_city: number = 2, stateNames?: string[]) {
     let cities: city[] = [];
     let city_pool = all_cities;
     if (stateNames) {
@@ -50,13 +50,17 @@ function randomGenerator(size: number = 20, link_number_for_each_city: number = 
     }
 
     cities.forEach((city) => {
+        let connected = [city.name];
         for (let j = 0; j < getRandomNum(link_number_for_each_city) && j < cities.length - 1; j++) {
             let rc = cities[getRandomNum(cities.length)];
-            city.reachable_cities.push({
-                name: rc.name,
-                state: rc.state,
-                transport: getRandomNum(1) === 1 ? 'air' : 'land'
-            })
+            if (connected.indexOf(rc.name) < 0) {
+                city.reachable_cities.push({
+                    name: rc.name,
+                    state: rc.state,
+                    transport: getRandomNum(1) === 1 ? 'air' : 'land'
+                });
+                connected.push(rc.name)
+            }
         }
     })
 
