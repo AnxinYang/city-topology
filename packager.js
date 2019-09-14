@@ -11,6 +11,7 @@ const config_dev = require('./webpack.config.dev');
 
 const argv = process.argv;
 const isProduction = argv.includes('production');
+const isServerRunning = false;
 
 console.log(`Mode: ${isProduction ? 'production' : 'development'}`)
 
@@ -26,7 +27,7 @@ if (!isProduction) {
                 colors: true
             }));
             console.log('Process completed. Starting http server');
-            runServer();
+            !isServerRunning && runServer();
         });
 
 } else {

@@ -43,7 +43,7 @@ export default function render(expandedState?: state) {
     let { nodes, links } = topologyData;
 
 
-    let width = window.innerWidth - 50, height = window.innerHeight - 50;
+    let width = window.innerWidth, height = window.innerHeight;
 
     svg.attr('height', height)
         .attr('width', width)

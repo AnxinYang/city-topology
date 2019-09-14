@@ -10,4 +10,8 @@
   font-size: 12px;
 }
 
+#root {
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=main.css.map */

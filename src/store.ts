@@ -123,5 +123,5 @@ export {
     state_array,
     createTopologyData,
     getState,
-    getCity
+    getCity,
 }
