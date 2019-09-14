@@ -26,6 +26,8 @@ function storeState(city: city) {
             reachable_states: [],
             type: 'state'
         }
+        store.set(state.name + '_state', state);
+        state_array.push(state);
     }
     state.reachable_cities = [...city.reachable_cities.filter(reachable_city => reachable_city.state !== city.state), ...state.reachable_cities]
     state.reachable_cities.forEach(reachable_city => {
@@ -34,8 +36,6 @@ function storeState(city: city) {
         }
     })
     state.cities.push(city.name);
-    store.set(state.name + '_state', state);
-    state_array.push(state);
     return state;
 }
 
@@ -121,5 +121,7 @@ export {
     storeState,
     storeCitiesAndStates,
     state_array,
-    createTopologyData
+    createTopologyData,
+    getState,
+    getCity
 }
