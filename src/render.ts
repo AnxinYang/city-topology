@@ -26,14 +26,7 @@ let linkForce = d3.forceLink()
     .distance((d: any) => {
         return d.distance;
     }).strength(0.01);
-let charge = d3.forceManyBody().strength(-100);
-let xScale = d3.scaleLinear()
-
-let yScale = d3.scaleLinear()
-let zoomScale = d3.scaleLinear()
-    .domain([1, 6])
-    .range([1, 6])
-    .clamp(true);
+let charge = d3.forceManyBody().strength(-128);
 
 
 
@@ -51,13 +44,6 @@ export default function render(expandedState?: state) {
 
         });
 
-    xScale.domain([0, width])
-        .range([0, width]);
-    yScale
-        .domain([0, height])
-        .range([0, height]);
-    zoomScale
-
     linkForce.links(links);
 
     let simulation = d3.forceSimulation(nodes)
@@ -67,7 +53,7 @@ export default function render(expandedState?: state) {
         .force('x', d3.forceX().x(function (d: (city | state)) {
             return d.type === 'state' ? width * 0.66 : width * 0.33;
         }).strength(0.02))
-        .force('y', d3.forceY().y(height / 2).strength(0.05))
+        .force('y', d3.forceY().y(height / 2).strength(0.02))
         .force('collision', d3.forceCollide().radius(function (d: (city | state)) {
             return d.type === 'city' ? circle_size[d.type] : circle_size[d.type] * 2;
         }))
