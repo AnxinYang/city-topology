@@ -12,7 +12,7 @@ const transport_color = {
     'air': '#74b9ff'
 }
 let zoom_handler = d3.zoom()
-    .scaleExtent([0.5, 3])
+    .scaleExtent([0.1, 3])
     .on("zoom", function () {
         svg.select('.links')
             .attr("transform", d3.event.transform)
@@ -26,7 +26,7 @@ let linkForce = d3.forceLink()
     .distance((d: any) => {
         return d.distance;
     }).strength(0.01);
-let charge = d3.forceManyBody().strength(-128);
+let charge = d3.forceManyBody();
 
 
 
@@ -48,7 +48,9 @@ export default function render(expandedState?: state) {
 
     let simulation = d3.forceSimulation(nodes)
         .force('link', linkForce)
-        .force('charge', charge)
+        .force('charge', charge.strength((d: (city | state)) => {
+            return d.type === 'state' ? -1024 : -64
+        }))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force('x', d3.forceX().x(function (d: (city | state)) {
             return d.type === 'state' ? width * 0.66 : width * 0.33;
