@@ -38,8 +38,13 @@ function randomGenerator(size: number = 20, link_number_for_each_city: number = 
             return stateNames.indexOf(c.state) > -1
         })
     }
+    let picked_cities = [];
     for (let i = 0; i < size && i < city_pool.length; i++) {
         let c = city_pool[getRandomNum(city_pool.length)];
+        if (picked_cities.indexOf(c.city) >= 0) {
+            i--;
+            continue;
+        }
         let city: city = {
             name: c.city,
             state: c.state,
@@ -47,6 +52,7 @@ function randomGenerator(size: number = 20, link_number_for_each_city: number = 
 
         }
         cities.push(city)
+        picked_cities.push(city.name);
     }
 
     cities.forEach((city) => {
