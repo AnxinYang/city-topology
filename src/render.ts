@@ -67,9 +67,9 @@ export default function render(expandedState?: state) {
         .force('x', d3.forceX().x(function (d: (city | state)) {
             return d.type === 'state' ? width * 0.66 : width * 0.33;
         }).strength(0.02))
-        .force('y', d3.forceY().y(height / 2).strength(0.02))
+        .force('y', d3.forceY().y(height / 2).strength(0.05))
         .force('collision', d3.forceCollide().radius(function (d: (city | state)) {
-            return circle_size[d.type];
+            return d.type === 'city' ? circle_size[d.type] : circle_size[d.type] * 2;
         }))
         .on('tick', ticked)
 
